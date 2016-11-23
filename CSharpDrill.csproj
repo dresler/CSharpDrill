@@ -40,14 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Beginner\NoStuffYet.txt" />
     <Content Include="Intermediate\AttributesForEnum.txt" />
+    <Content Include="Advanced\NoStuffYet.txt" />
     <Compile Include="Intermediate\Solutions\AttributesForEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Advanced\" />
-    <Folder Include="Beginner\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
