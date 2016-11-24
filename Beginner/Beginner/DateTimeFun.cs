@@ -4,6 +4,8 @@ namespace Beginner
 {
     public class DateTimeFun
     {
+        // !!! Note: In this exercise, we're using UK date format for task descriptions, i.e. (dd.MM.yyyy h:mm:ss)
+        // (dd=day, MM=month, yyyy=year, h=hour, mm=minute, ss=second)
         public void RunTests()
         {
         }
@@ -30,7 +32,7 @@ namespace Beginner
         private int NumberOfWorkingDaysInPreviousThreeDays(DateTime day)
         {
             // 1. Implement this method. It should return how many days were working days in 3 days before given dateTime (i.e. dateTime -1, -2 and -3)
-            //    e.g. if dateTime is friday it returns 3, if dateTime is monday it returns 1
+            //    e.g. if the dateTime is friday it returns 3, if dateTime is monday it returns 1
             //    Ignore public holidays and other exceptional dates.
             // 2. Demonstrate usage of the method in "RunTests()" for some date of your choosing
             throw new NotImplementedException();
@@ -43,7 +45,8 @@ namespace Beginner
             //    e.g. "1.1.2016 0:00:00 is working day" 
             //    Ignore public holidays and other exceptional dates.
             // 2. Demonstrate usage of the method in "RunTests()" for some date of your choosing
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return String.Format("{0} is working day", day);
         }
 
         //Task5
@@ -79,6 +82,32 @@ namespace Beginner
             Console.WriteLine(NumberOfWorkingDaysInPreviousThreeDays(day));//1 -> 0
             Console.WriteLine(PrintInfoAboutDay(day));//working -> non-working
             Console.WriteLine(IsPublicHoliday(day));//true
+        }
+
+        //Task7
+        // 1. Create a private method that returns number of days that have elapsed since given date.
+        // 2. Using method RunTests(), prove that it works for all the test cases below:
+        /*
+            (assume current datetime is 20.1.2016 0:00:01)
+            INPUT -> OUTPUT
+            1.1.2016 0:00:01 -> 19
+            19.1.2016 0:00:01 -> 1
+            20.5.2016 0:00:01 -> -121
+            20.1.2016 0:00:00 -> 0
+            20.1.2016 0:00:02 -> 0
+        */
+
+        //Task8
+        // 1. Finish the implementation below by printing all properties of object held in the variable "difference"
+        // 2. Call the method from RunTests() and prove that it works
+        // 3. What type does the variable "difference" have? Print its name into console as well.
+        private void PrintAllTimeSpanProperties()
+        {
+            var firstDay = new DateTime(2016, 1, 1);
+            var secondDay = new DateTime(2016, 1, 2);
+            var difference = secondDay - firstDay;
+
+            throw new NotImplementedException();
         }
     }
 }
