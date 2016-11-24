@@ -4,7 +4,7 @@ namespace Beginner
 {
     public class DateTimeFun
     {
-        // !!! Note: In this exercise, we're using UK date format for task descriptions, i.e. (dd.MM.yyyy h:mm:ss)
+        // !!! Note: In this exercise, we're using UK date format for task descriptions, i.e. dd.MM.yyyy h:mm:ss
         // (dd=day, MM=month, yyyy=year, h=hour, mm=minute, ss=second)
         public void RunTests()
         {
@@ -45,8 +45,7 @@ namespace Beginner
             //    e.g. "1.1.2016 0:00:00 is working day" 
             //    Ignore public holidays and other exceptional dates.
             // 2. Demonstrate usage of the method in "RunTests()" for some date of your choosing
-            //throw new NotImplementedException();
-            return String.Format("{0} is working day", day);
+            throw new NotImplementedException();
         }
 
         //Task5
