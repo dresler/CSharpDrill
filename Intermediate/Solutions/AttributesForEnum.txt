@@ -1,0 +1,62 @@
+﻿// Solution for AttributesForEnum
+
+public static class DeveloperTypeExtensions
+{
+    public static IReadOnlyCollection<DeveloperSkillType> GetRequiredSkills(this DeveloperType developerType)
+    {
+        var requiredSkillAttributes = typeof(DeveloperType)
+            .GetField(developerType.ToString())
+            .GetCustomAttributes(typeof(RequiredSkill), false)
+            .OfType<RequiredSkill>();
+
+        return requiredSkillAttributes.Select(requiredSkillAttribute => requiredSkillAttribute.SkillType).ToList().AsReadOnly();
+    }
+}
+
+public enum DeveloperSkillType
+{
+    CSharp,
+    VisualBasic,
+    MsSql,
+    SoapRest,
+    Mvc,
+    React,
+    JavaScript
+}
+
+public enum DeveloperType
+{
+    [RequiredSkill(DeveloperSkillType.CSharp)]
+	[RequiredSkill(DeveloperSkillType.VisualBasic)]
+	[RequiredSkill(DeveloperSkillType.MsSql)]
+	BackEndDeveloper,
+
+	[RequiredSkill(DeveloperSkillType.CSharp)]
+	[RequiredSkill(DeveloperSkillType.JavaScript)]
+	[RequiredSkill(DeveloperSkillType.Mvc)]
+	[RequiredSkill(DeveloperSkillType.React)]
+	FrontEndDeveloper,
+
+	[RequiredSkill(DeveloperSkillType.CSharp)]
+	[RequiredSkill(DeveloperSkillType.MsSql)]
+	[RequiredSkill(DeveloperSkillType.SoapRest)]
+	ServiceDeveloper,
+
+    FakeDeveloper
+}
+
+[AttributeUsage(AttributeTargets.Field, AllowMultiple = true)]
+public sealed class RequiredSkill : Attribute
+{
+    public RequiredSkill(DeveloperSkillType developerSkillType)
+    {
+        SkillType = developerSkillType;
+    }
+
+    public DeveloperSkillType SkillType { get; }
+
+    public override string ToString()
+    {
+        return SkillType.ToString();
+    }
+}
