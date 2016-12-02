@@ -1,0 +1,106 @@
+﻿// Solution for YatzyCalculator
+// Tags: Linq
+
+public class YatzyCalculator
+{
+    public int Chance(int[] dice)
+    {
+        return dice.Sum();
+    }
+
+    public int Yatzy(int[] dice)
+    {
+        const int yatzyScore = 50;
+        return dice.Distinct().Count() == 1 ? yatzyScore : 0;
+    }
+
+    public int Ones(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 1);
+    }
+
+    public int Twos(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 2);
+    }
+
+    public int Threes(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 3);
+    }
+
+    public int Fours(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 4);
+    }
+
+    public int Fives(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 5);
+    }
+
+    public int Sixes(int[] dice)
+    {
+        return GetSumOfDiceWithValue(dice, 6);
+    }
+
+    private static int GetSumOfDiceWithValue(int[] dice, int theValue)
+    {
+        return dice.Where(d => d == theValue).Sum();
+    }
+
+    public int Pair(int[] dice)
+    {
+        var pairKinds = GetKinds(dice, 2);
+        return pairKinds.Any() ? pairKinds.Max(k => k * 2) : 0;
+    }
+
+    public int TwoPairs(int[] dice)
+    {
+        var pairs = GetKinds(dice, 2);
+        const int numberOfRequiredPairs = 2;
+        return pairs.Count() == numberOfRequiredPairs ? pairs.Sum(k => k * 2) : 0;
+    }
+
+    public int ThreeOfKind(int[] dice)
+    {
+        return GetKinds(dice, 3).Sum(k => k * 3);
+    }
+
+    public int FourOfKind(int[] dice)
+    {
+        return GetKinds(dice, 4).Sum(k => k * 4);
+    }
+
+    // TODO: Rename to better name
+
+    public int SmallStraight(int[] dice)
+    {
+        var isSmallStraight = dice.OrderBy(d => d).SequenceEqual(new[] { 1, 2, 3, 4, 5 });
+        return isSmallStraight ? dice.Sum() : 0;
+    }
+
+    public int LargeStraight(int[] dice)
+    {
+        var isLargeStraight = dice.OrderBy(d => d).SequenceEqual(new[] { 2, 3, 4, 5, 6 });
+        return isLargeStraight ? dice.Sum() : 0;
+    }
+
+    public int FullHouse(int[] dice)
+    {
+        // TODO: Refactor to better readability
+        var isFullHouse = dice
+            .GroupBy(d => d)
+            .Where(diceInGroup => new[] { 2, 3 }.Contains(diceInGroup.Count()))
+            .Sum(diceInGroup => diceInGroup.Count()) == 5;
+
+        return isFullHouse ? dice.Sum() : 0;
+    }
+
+    private IEnumerable<int> GetKinds(int[] dice, int minSizeOfGroup)
+    {
+        return dice
+            .GroupBy(d => d, (d, diceInGroup) => diceInGroup.Count() >= minSizeOfGroup ? d : 0)
+            .Where(kind => kind > 0);
+    }
+}

@@ -64,6 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Intermediate\Solutions\YatzyCalculator.txt" />
+    <Compile Include="Intermediate\YatzyCalculator.cs" />
     <Compile Include="TagsAttribute.cs" />
     <Content Include="Beginner\NoStuffYet.txt" />
     <Content Include="Advanced\NoStuffYet.txt" />
