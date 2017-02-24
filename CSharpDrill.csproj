@@ -67,6 +67,8 @@
     <Content Include="Intermediate\Solutions\ConcurrentOperations.txt" />
     <Content Include="Advanced\Solutions\DeadlockMaker.txt" />
     <Content Include="Intermediate\Solutions\YatzyCalculator.txt" />
+    <Compile Include="Advanced\IsPowerOfTwoEvaluator.cs" />
+    <Content Include="Advanced\Solutions\IsPowerOfTwoEvaluator.txt" />
     <Compile Include="Intermediate\CaloriesCalculator.cs" />
     <Compile Include="Intermediate\ConcurrentOperations.cs" />
     <Compile Include="Advanced\DeadlockMaker.cs" />

@@ -1,0 +1,9 @@
+﻿// Solution for IsExponentOfTwoEvaluator
+
+public class IsPowerOfTwoEvaluator
+{
+    public static bool Evaluate(int number)
+    {
+        return number > 0 && (number & (number - 1)) == 0;
+    }
+}
