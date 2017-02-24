@@ -1,0 +1,36 @@
+﻿// Solution for DeadlockMaker
+
+public class DeadlockMaker
+{
+    public static object _lockA = new object();
+    public static object _lockB = new object();
+
+    public static void Do()
+    {
+        var taskA = Task.Run(() =>
+        {
+            lock (_lockA)
+            {
+                Debug.WriteLine("Task A: Locked by lockA.");
+
+                Thread.Sleep(50);
+
+                lock (_lockB) { }
+            }
+        });
+
+        var taskB = Task.Run(() =>
+        {
+            lock (_lockB)
+            {
+                Debug.WriteLine("Task B: Locked by lockB.");
+
+                Thread.Sleep(50);
+
+                lock (_lockA) { }
+            }
+        });
+
+        Task.WaitAll(taskA, taskB);
+    }
+}
