@@ -1,0 +1,30 @@
+﻿// Solution for ConcurrentOperations
+
+public static class ConcurrentOperations
+{
+    private static object _lock = new object();
+
+    public static int Do(int iterations)
+    {
+        var n = 0;
+
+        var up = Task.Run(() =>
+        {
+            for (int i = 0; i < iterations; i++)
+                lock (_lock)
+                {
+                    n++;
+                }
+        });
+
+        for (int i = 0; i < iterations; i++)
+            lock (_lock)
+            {
+                n--;
+            }
+
+        up.Wait();
+
+        return n;
+    }
+}
