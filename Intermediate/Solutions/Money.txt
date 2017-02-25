@@ -1,0 +1,26 @@
+﻿// Solution for Money.cs
+
+public class Money
+{
+    public decimal Amount { get; }
+
+    public Money(decimal amount)
+    {
+        Amount = amount;
+    }
+
+    public static implicit operator Money(decimal amount)
+    {
+        return new Money(amount);
+    }
+
+    public static explicit operator int(Money money)
+    {
+        return (int) money.Amount;
+    }
+
+    public static implicit operator decimal(Money money)
+    {
+        return money.Amount;
+    }
+}

@@ -67,6 +67,7 @@
     <Content Include="Intermediate\Solutions\ConcurrentOperations.txt" />
     <Content Include="Advanced\Solutions\DeadlockMaker.txt" />
     <Content Include="Intermediate\Solutions\KnowYourTypes.txt" />
+    <Content Include="Intermediate\Solutions\Money.txt" />
     <Content Include="Intermediate\Solutions\YatzyCalculator.txt" />
     <Compile Include="Advanced\IsPowerOfTwoEvaluator.cs" />
     <Content Include="Advanced\Solutions\IsPowerOfTwoEvaluator.txt" />
@@ -74,6 +75,7 @@
     <Compile Include="Intermediate\ConcurrentOperations.cs" />
     <Compile Include="Advanced\DeadlockMaker.cs" />
     <Compile Include="Intermediate\KnowYourTypes.cs" />
+    <Compile Include="Intermediate\Money.cs" />
     <Compile Include="Intermediate\YatzyCalculator.cs" />
     <Compile Include="TagsAttribute.cs" />
     <Content Include="Beginner\NoStuffYet.txt" />
