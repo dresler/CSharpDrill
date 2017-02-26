@@ -1,0 +1,36 @@
+﻿// Solution for MorseCodeConverter
+
+public static class MorseCodeConverter
+{
+    private static IDictionary<char, string> _alphabet = GetAlphabet();
+
+    private static IDictionary<char, string> GetAlphabet()
+    {
+        var jsonSerializer = new JavaScriptSerializer();
+        var alphabetWithStringsAsKeys = jsonSerializer.Deserialize<Dictionary<string, string>>(MorseCodeConstants.MorseAlphabetAsJson);
+        var alphabetWithCharsAsKeys = alphabetWithStringsAsKeys
+            .ToDictionary(pair => char.Parse(pair.Key), pair => pair.Value);
+
+        return alphabetWithCharsAsKeys;
+    }
+
+    public static string ToMorseCode(string text)
+    {
+        var morseCodesForCharacters = text.ToLower().Select(ch => _alphabet[ch]);
+        var morseCodeWithDelimiter = string.Join(MorseCodeConstants.MorseCodesSeparator, morseCodesForCharacters);
+        return morseCodeWithDelimiter;
+    }
+
+    public static string FromMorseCode(string morseCode)
+    {
+        var morseCodes = morseCode.Split(new[] { MorseCodeConstants.MorseCodesSeparator}, StringSplitOptions.RemoveEmptyEntries);
+        var chars = morseCodes.Select(MapMorseCodeToChar).ToArray();
+        var text = new string(chars);
+        return text;
+    }
+
+    private static char MapMorseCodeToChar(string morseCode)
+    {
+        return _alphabet.First(pair => pair.Value == morseCode).Key;
+    }
+}
