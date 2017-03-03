@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Advanced\Solutions\MorseCodeConverter.txt" />
+    <Content Include="Beginner\Solutions\DateTimeFun.txt" />
     <Content Include="Intermediate\Solutions\ConcurrentOperations.txt" />
     <Content Include="Advanced\Solutions\DeadlockMaker.txt" />
     <Content Include="Intermediate\Solutions\KnowYourTypes.txt" />
@@ -74,6 +75,7 @@
     <Compile Include="Advanced\IsPowerOfTwoEvaluator.cs" />
     <Content Include="Advanced\Solutions\IsPowerOfTwoEvaluator.txt" />
     <Compile Include="Advanced\MorseCodeConverter.cs" />
+    <Compile Include="Beginner\DateTimeFun.cs" />
     <Compile Include="Intermediate\CaloriesCalculator.cs" />
     <Compile Include="Intermediate\ConcurrentOperations.cs" />
     <Compile Include="Advanced\DeadlockMaker.cs" />
@@ -81,7 +83,6 @@
     <Compile Include="Intermediate\Money.cs" />
     <Compile Include="Intermediate\YatzyCalculator.cs" />
     <Compile Include="TagsAttribute.cs" />
-    <Content Include="Beginner\NoStuffYet.txt" />
     <Compile Include="Intermediate\AttributesForEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Intermediate\Solutions\AttributesForEnum.txt" />
